@@ -57,15 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Show Envelope
         tl.to(overlay, { duration: 0.5, autoAlpha: 1 })
-          .to(wrapper, { duration: 0.8, scale: 1, opacity: 1, ease: "back.out(1.2)" }, "-=0.2")
+          .to(wrapper, { duration: 0.7, scale: 1, opacity: 1, ease: "back.out(1.2)" }, "-=0.2")
           
         // 2. Open Flap
-          .to(flap, { duration: 0.6, rotateX: 180, ease: "power2.inOut" })
+          .to(flap, { duration: 0.5, rotateX: 180, ease: "power2.inOut" })
           .set(flap, { zIndex: 10 }) // Drop behind
 
         // 3. Slide Letter Up
           .to(letter, { 
-              duration: 0.8, 
+              duration: 0.4, 
               y: -150, 
               ease: "power2.out" 
           })
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. Bring Letter to Front & Fullscreen
           .set(letter, { zIndex: 100 })
           .to(letter, {
-              duration: 1.2,
+              duration: 1.0,
               position: "fixed",
               top: "50%",
               left: "50%",

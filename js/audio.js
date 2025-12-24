@@ -3,7 +3,7 @@ export class MusicPlayer {
         this.audioContext = null;
         this.isPlaying = false;
         this.notes = [];
-        this.tempo = 100; // Speed (bpm-ish)
+        this.tempo = 120; // Speed (bpm-ish)
         this.noteIndex = 0;
         this.schedulerTime = 0;
         this.timerID = null;
@@ -42,7 +42,7 @@ export class MusicPlayer {
         if (!this.audioContext) {
             this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
             this.gainNode = this.audioContext.createGain();
-            this.gainNode.gain.value = 0.1; // Low volume initially
+            this.gainNode.gain.value = 0.4; // Increased volume
             this.gainNode.connect(this.audioContext.destination);
         }
     }
@@ -81,7 +81,7 @@ export class MusicPlayer {
         osc.frequency.setValueAtTime(note.f, this.schedulerTime);
 
         envelope.gain.setValueAtTime(0, this.schedulerTime);
-        envelope.gain.linearRampToValueAtTime(0.1, this.schedulerTime + 0.05);
+        envelope.gain.linearRampToValueAtTime(0.4, this.schedulerTime + 0.05);
         envelope.gain.exponentialRampToValueAtTime(0.001, this.schedulerTime + note.d * (60/this.tempo) * 1.5);
 
         osc.connect(envelope);
